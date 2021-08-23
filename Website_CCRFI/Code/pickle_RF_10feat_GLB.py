@@ -21,7 +21,7 @@ import pickle
    
 '''set directory for where functions for are data and import in mda_recursive.py'''
 
-os.chdir('/Users/lockiemichalski/Documents/UQ/Credit Research')
+os.chdir('')
 
 gl_data = pd.read_csv('GLOBAL_NONESG_SAMPLE_CLEAN_FULL_SOV.csv').iloc[:,1:] # all classes
 gl_data = gl_data[['Country of Exchange', 'loc_rank']]
@@ -88,6 +88,5 @@ model = pickle.load(open('GLB_RF10feat_model.pkl','rb'))
 ################################################################################
 # UPLOAD files to digitalocean
 ################################################################################
-#scp -r /Users/lockiemichalski/Desktop/Webpage/US_MDA  root@138.68.170.171:~
 
 
