@@ -1,5 +1,5 @@
 
-Capital_IQ_webscraping - Uses selenium to scrape quarterly income statement, balance sheet, cash flow statement and financial ratios from Capital IQ
+i) Capital_IQ_webscraping - Uses selenium to scrape quarterly income statement, balance sheet, cash flow statement and financial ratios from Capital IQ
 
 
 
