@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>US predict</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-book,.fa-wave-square {font-size:200px}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-sand w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+    <a href="us_home" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">US firm predictor</a>
+    <a href="glb_home" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Global firm predictor</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="us_home" class="w3-bar-item w3-button w3-padding-large">US firm predictor</a>
+    <a href="glb_home" class="w3-bar-item w3-button w3-padding-large">Global firm predictor</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-light-grey  w3-center" style="padding: 70px 20px">
+  <h1 class="w3-margin w3-xxlarge">US firm S&P corporate credit rating predictor</h1>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-threequarter">
+      <h3>Please enter quarterly financial ratios (excluding financial firms)</h3>
+      <p class="w3-text-grey"><small> Values inputted must be decimals (e.g., Gross Profit Margin of 26% would be entered as 0.26)
+      <br>
+      <a href="https://www.calculatorsoup.com/calculators/math/percent-to-decimal-calculator.php" 
+      target="_blank">Percentage to decimal calculator</a> 
+      </small></p>
+      <br> 
+      <form action="{{ url_for('predict_us')}}" method="post">        
+      <label for="Interest Coverage Ratio" colo>Interest Coverage Ratio:  </label>
+      <input type="number" step="any" name="Interest Coverage Ratio" 
+      style="width:20%;max-width:30%;" placeholder="ICR" required="required" />      
+      <span title="After-tax income interest and related expenses">?</span>
+      <br>
+      <br>
+      <label for="Long-term Debt/Total Liabilities">Long-term Debt/Total Liabilities:  </label>
+      <input type="number" step="any" name="Long-term Debt/Total Liabilities" 
+      style="width:20%;max-width:30%;" placeholder="LTDTL" required="required">
+      <span title="Long-term debt as a fraction of total liabilities">?</span>
+      <br>
+      <br>
+      <label for="Inventory Turnover">Inventory Turnover:  </label>
+      <input type="number" step="any" name="Inventory Turnover" 
+      style="width:20%;max-width:30%;" placeholder="IT" required="required">
+      <span title="COGS as a fraction of the average inventories based on the most recent four quarters">?</span>
+      <br>
+      <br>
+      <label for="GICS Industry">GICS Industry:  </label>
+      <select id="GICS Industry" name="GICS Industry" style="width:40%;max-width:60%;",
+      placeholder="GICS", required="required">        
+        <option value="101010">Energy Equipment & Services (101010)</option>
+        <option value=101020>Oil, Gas & Consumable Fuels (101020)</option>
+        <option value=151010>Chemicals (151010)</option>
+        <option value=151020>Construction Materials (151020)</option>
+        <option value=151030>Containers & Packaging (151030)</option>
+        <option value=151040>Metals & Mining (151040)</option>
+        <option value=151050>Paper & Forest Products (151050)</option>
+        <option value=201010>Aerospace & Defense (201010)</option>
+        <option value=201020>Building Products (201020)</option>
+        <option value=201030>Construction & Engineering (201030)</option>
+        <option value=201040>Electrical Equipment (201040)</option>
+        <option value=201050>Industrial Conglomerates (201050)</option>
+        <option value=201060>Machinery (201060)</option>
+        <option value=201070>Trading Companies & Distributors (201070)</option>
+        <option value=202010>Commercial Services & Supplies (202010)</option>
+        <option value=202020>Professional Services (202020)</option>
+        <option value=203010>Air Freight & Logistics (203010)</option>
+        <option value=203020>Airlines (203020)</option>
+        <option value=203030>Marine (203030)</option>
+        <option value=203040>Road & Rail (203040)</option>
+        <option value=203050>Transportation Infrastructure (203050)</option>
+        <option value=251010>Auto Components (251010)</option>
+        <option value=251020>Automobiles (251020)</option>
+        <option value=252010>Household Durables (252010)</option>
+        <option value=252020>Leisure Products (252020)</option>
+        <option value=252030>Textiles, Apparel & Luxury Goods (252030)</option>
+        <option value=253010>Hotels, Restaurants & Leisure (253010)</option>
+        <option value=253020>Diversified Consumer Services (253020)</option>
+        <option value=255010>Distributors (255010)</option>
+        <option value=255020>Internet & Direct Marketing Retail (255020)</option>
+        <option value=255030>Multiline Retail (255030)</option>
+        <option value=255040>Specialty Retail (255040)</option>
+        <option value=301010>Food & Staples Retailing (301010)</option>
+        <option value=302010>Beverages (302010)</option>
+        <option value=302020>Food Products (302020)</option>
+        <option value=302030>Tobacco (302030)</option>
+        <option value=303010>Household Products (303010)</option>
+        <option value=303020>Personal Products (303020)</option>
+        <option value=351010>Health Care Equipment & Supplies (351010)</option>
+        <option value=351020>Health Care Providers & Services (351020)</option>
+        <option value=351030>Health Care Technology (351030)</option>
+        <option value=352010>Biotechnology (352010)</option>
+        <option value=352020>Pharmaceuticals (352020)</option>
+        <option value=352030>Life Sciences Tools & Services (352030)</option>
+        <option value=451020>IT Services (451020)</option>
+        <option value=451030>Software (451030)</option>
+        <option value=452010>Communications Equipment (452010)</option>
+        <option value=452020>Technology Hardware, Storage & Peripherals (452020)</option>
+        <option value=452030>Electronic Equipment, Instruments & Components (452030)</option>
+        <option value=453010>Semiconductors & Semiconductor Equipment (453010)</option>
+        <option value=501010>Diversified Telecommunication Services (501010)</option>
+        <option value=501020>Wireless Telecommunication Services (501020)</option>
+        <option value=551010>Media (551010)</option>
+        <option value=551020>Entertainment (551020)</option>
+        <option value=551030>Interactive Media & Services (551030)</option>
+        <option value=551040>Water Utilities (551040)</option>
+        <option value=551050>Independent Power and Renewable Electricity Producers (551050)</option>
+        <option value=601010>Equity Real Estate Investment Trusts (REITs) (601010)</option>
+        <option value=601020>Real Estate Management & Development (601020)</option>
+      </select>
+      <span title="Industry classification">?</span>
+      <br>
+      <br>
+      <label for="Interest/Average Total Debt">Interest/Average Total Debt:  </label>
+      <input type="number" step="any" name="Interest/Average Total Debt" 
+      style="width:20%;max-width:30%;" placeholder="IATD" required="required">
+      <span title="Interest as a fraction of average total debt based on most recent four quarters">?</span>
+      <br>
+      <br>
+      <label for="Total Liabilities/Total Tangible Assets">Total Liabilities/Total Tangible Assets:  </label>
+      <input type="number" step="any" name="Total Liabilities/Total Tangible Assets" 
+      style="width:20%;max-width:30%;" placeholder="TLTTA" required="required">
+      <span title="Total liabilities to total tangible assets">?</span>
+      <br>
+      <br>
+      <label for="Operating Profit Margin Before Depreciation">Operating Profit Margin Before Depreciation:  </label>
+      <input type="number" step="any" name="Operating Profit Margin Before Depreciation" 
+      style="width:20%;max-width:30%;" placeholder="OPMBD" required="required">
+      <span title="Operating income before depreciation as a fraction of sales">?</span>
+      <br>
+      <br>
+      <label for="Short-Term Debt/Total Debt">Short-Term Debt/Total Debt:  </label>
+      <input type="number" step="any" name="Short-Term Debt/Total Debt" 
+      style="width:20%;max-width:30%;" placeholder="STDTD" required="required">
+      <span title="Short-term debt as a fraction of total debt">?</span>
+      <br>
+      <br>      
+      <label for="Total Debt/Total Assets">Total Debt/Total Assets:  </label>
+      <input type="number" step="any" name="Total Debt/Total Assets" 
+      style="width:20%;max-width:30%;" placeholder="TDTA" required="required">
+      <span title="Total debt as a fraction of total assets">?</span>
+      <br>
+      <br> 
+      <label for="Inventory/Current Assets">Inventory/Current Assets:  </label>
+      <input type="number" step="any" name="Inventory/Current Assets" 
+      style="width:20%;max-width:30%;" placeholder="ICA" required="required">
+      <span title="Inventories as a fraction of current assets">?</span>
+      <br>
+      <br>       
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict corporate credit rating (S&P)</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <p class="w3-margin w3-large">Check out: <br> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037" 
+      target="_blank">Corporate credit rating feature importance: Does ESG matter?</a><br>    
+    <a href="https://doi.org/10.1016/j.iref.2020.07.013" 
+      target="_blank">Sustainable factor investing: Where doing well meets doing good</a> 
+    </p>
+    <p>Built by <a href="https://www.linkedin.com/in/lachlanmichalski/" target="_blank">Lachlan Michalski</a> (PhD in Finance Candidate at 
+    <a href="https://about.uq.edu.au/university-profile" target="_blank">The University of Queensland</a>)
+    </p>
+</div>
+
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

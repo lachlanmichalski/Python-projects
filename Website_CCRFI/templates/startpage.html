@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>CCR predictor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-book,.fa-bar-chart-o {font-size:200px}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-sand w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+    <a href="us_home" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">US firm predictor</a>
+    <a href="glb_home" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Global firm predictor</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="us_home" class="w3-bar-item w3-button w3-padding-large">US firm predictor</a>
+    <a href="glb_home" class="w3-bar-item w3-button w3-padding-large">Global firm predictor</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-light-grey w3-center" style="padding:128px 20px">
+  <h1 class="w3-margin w3-xxlarge">Corporate credit rating feature importance: Does ESG matter?</h1>
+  <p class="w3-xlarge">Corportate credit rating predictor</p>
+  <div id="container">
+      <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" onclick="location.href='/us_home'">US firm</button>
+      <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" onclick="location.href='/glb_home'">Global firm</button>
+  </div>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Background research</h1>
+      <h5 class="w3-padding-32">The prediction model for corporate credit ratings
+      stems from research investigated in <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037" 
+      target="_blank">Corporate credit rating feature importance: Does ESG matter?</a> <br /> <br />
+      ESG features are not required to obtain a rating in this instance. Only quarterly accounting 
+     based features are needed as inputs. The trained model is >91% accurate on test data.
+     </h5>
+
+      <p class="w3-text-grey">As green bond issuance and sustainability-linked 
+      loans can attract increased media exposure, in addition to impact investors, 
+      large, and smaller institutional investors holding these to 
+      satisfy their investment mandates, investigating which ESG features are 
+      drivers of corporate credit predictability has important real world 
+      implications in capital markets functioning (e.g., finding mispriced bonds).
+      </p>
+      
+      <p class="w3-text-grey">
+      We introduce ESG features into US and global firm samples with accounting, 
+      microeconomic, and macroeconomic features exhibited in the literature for 
+      corporate credit rating prediction.
+      </p>
+      
+      <p class="w3-text-grey">
+      In terms of classification models, sophisticated models (e.g., support 
+      vector machines, neural networks, and tree-based ensembles) are compared 
+      to more traditional models (e.g., logistic regression and 
+      quadratic discriminant analysis) for predictive ability. 
+      </p>
+      
+      <p class="w3-text-grey">
+      Advocated by <a href="https://www.cambridge.org/core/books/machine-learning-for-asset-managers/6D9211305EA2E425D33A9F38D0AE3545" 
+      target="_blank">Lo&#769pez de Prado (2020)</a>, mean decrease impurity (MDI) and mean decrease accuracy (MDA) introduced by 
+      <a href="https://link.springer.com/article/10.1023/A:1010933404324" 
+      target="_blank">Breiman (2001)</a>, and Tree SHapley Additive 
+      exPlanations (TreeSHAP) introduced by <a href="https://arxiv.org/abs/1802.03888" 
+      target="_blank">Lundberg et al. (2018)</a> and <a href="https://arxiv.org/abs/1705.07874" 
+      target="_blank">Lundberg and Lee (2017)</a> are utilised for feature selection.
+      </p>
+    </div>
+
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-book w3-padding-64 w3-text-light-blue"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-bar-chart-o w3-padding-64 w3-text-light-blue w3-margin-right"></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Key findings of paper</h1>
+      <h5 class="w3-padding-32">Evaluates the performance of x14 statistical 
+      learning models using approx. 480 features of accounting, macroeconomic,
+      microeconomic, and ESG on a US and global dataset over the time frame of 
+      1982-2019.</h5>
+
+      <p class="w3-text-grey">(i) Random forests and extremely randomised trees models, 
+      with MDI, MDA and TreeSHAP feature importance methods, 
+      provide > 91% multi-class corporate credit rating prediction accuracy.
+      </p>
+      
+      <p class="w3-text-grey">(ii) ESG features are more important for 
+      investment-grade classes, whilst financial ratios exhibit greater 
+      importance for speculative-grade classes.
+      </p>
+
+      <p class="w3-text-grey">(iii) For US and global firms,
+      <a href="https://www.refinitiv.com/en/financial-data/indices/diversity-and-inclusion-index" 
+      target="_blank">Thomson Reuters Diversity and Inclusion Rating metrics</a>
+       of diversity score, inclusion score, people development score, and score are highly 
+      important corporate credit rating features.
+      </p>
+
+      <p class="w3-text-grey">(iv) The social factors comprising the aforementioned 
+      metrics are consistent with the findings presented in
+      <a href="https://link.springer.com/article/10.1007/s10551-013-1714-2" 
+      target="_blank">Attig et al. (2013).</a> Furthermore, the high importance 
+      of institutional owners in the presence of ESG features for US firms 
+      resembles <a href="https://doi.org/10.1016/j.jcorpfin.2018.12.001" 
+      target="_blank">Tang and Zhang (2020)</a> findings that green bond issuance 
+      increases institutional ownership.
+      </p>
+      
+      <p class="w3-text-grey"> (v) MDI and MDA feature importance methods identifies 
+      features that provide greater out-of-sample multi-class prediction, however
+      TreeSHAP provides insights into which features are driving the prediction 
+      of per class corporate credit ratings.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <p class="w3-margin w3-large">Check out: <br> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037" 
+      target="_blank">Corporate credit rating feature importance: Does ESG matter?</a><br>    
+    <a href="https://doi.org/10.1016/j.iref.2020.07.013" 
+      target="_blank">Sustainable factor investing: Where doing well meets doing good</a> 
+    </p>
+    <p>Built by <a href="https://www.linkedin.com/in/lachlanmichalski/" target="_blank">Lachlan Michalski</a> (PhD in Finance Candidate at 
+    <a href="https://about.uq.edu.au/university-profile" target="_blank">The University of Queensland</a>)
+    </p>
+</div>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
