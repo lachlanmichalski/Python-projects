@@ -23,7 +23,7 @@ import pickle
    
 '''set directory for where functions for are data and import in mda_recursive.py'''
 
-os.chdir('/Users/lockiemichalski/Documents/UQ/Credit Research')
+os.chdir('')
 
 us_data = pd.read_csv('US_NONESG_SAMPLE_CLEAN_USE_SOV.csv').iloc[:,1:] # all classes
 
@@ -87,4 +87,4 @@ model = pickle.load(open('US_RF10feat_model.pkl','rb'))
 ################################################################################
 # UPLOAD files to digitalocean
 ################################################################################
-#scp -r /Users/lockiemichalski/Desktop/Webpage/US_MDA  root@138.68.170.171:~
+
