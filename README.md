@@ -7,4 +7,4 @@ Feed this text data into Word2Vec and cluster words together to see similar word
 
 iii) Quarterly financial ratio funtion WRDS - Python function that returns 71 (59) TTM quarterly financial ratios for listed US (global) firms utilising data from WRDS. Financial ratios utilisied in my first PhD paper.
 
-iv) MVP website for corporate credit rating prediction - Uses Flask and DigitalOcean (Paper - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037)
+iv) MVP website for corporate credit rating prediction - Used Flask and DigitalOcean (Paper - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037)
