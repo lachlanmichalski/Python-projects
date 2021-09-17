@@ -10,7 +10,7 @@ Requires subscription to WRDS with access to CRSP and COMPUSTAT,
 and create/have a free account with St Louis Fed FRED API 
 (https://fred.stlouisfed.org/docs/api/fred/) 
 
-ALL YOU NEED TO INPUT IS THE FOLLOW:
+ALL YOU NEED TO INPUT IS THE FOLLOWING:
     1.  List of permno codes
     2.  Start date
     3.  End date
