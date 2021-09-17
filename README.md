@@ -9,5 +9,5 @@ iii) Quarterly financial ratio funtion WRDS - Python function that returns 71 (5
 
 iv) MVP website for corporate credit rating prediction - Used Flask and DigitalOcean (Paper - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3788037)
 
-v) Distance to default python implementation - Exact replication of Replication of dtd in R -> https://rdrr.io/rforge/ifrogs/src/R/dtd.R
+v) Distance to default python implementation - Exact replication of dtd in R -> https://rdrr.io/rforge/ifrogs/src/R/dtd.R
 Extra documentation -> https://rdrr.io/rforge/ifrogs/f/inst/doc/dtd.pdf
