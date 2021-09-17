@@ -38,7 +38,7 @@ ALL YOU NEED TO INPUT IS THE FOLLOW:
 '''
 ##############################################################################
 conn=wrds.Connection() #connect to WRDS API
-fred = Fred(api_key='71d0dc71b1e1440792158ba5486c25d3') #enter api key when account created with St Louis FRED
+fred = Fred(api_key='') #enter api key when account created with St Louis FRED
 
 ####EXAMPLE COMPANIES####
 #american airlines -> cusip = 02376R102, permno = 21020
