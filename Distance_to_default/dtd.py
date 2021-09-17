@@ -17,9 +17,7 @@ from pandas.tseries.offsets import MonthEnd
 from fredapi import Fred
 
 plt.style.use('seaborn')
-
 ##############################################################################
-
 '''Function to calculate Distance-to-default
 
 Replication of dtd in R -> https://rdrr.io/rforge/ifrogs/src/R/dtd.R
@@ -57,7 +55,6 @@ placeholders_permno = ','.join('%s' for i in range(len(unique_permno))) # '?,?'
 
 start_date = '12/31/1995'
 end_month = '12/31/2020'
-
 ##############################################################################
 #Function to retrieve the inputs required for the Merton model to estimate dtd
 def distance_to_default_inputs(start_date, end_month, placeholders_permno):
@@ -146,11 +143,9 @@ def distance_to_default_inputs(start_date, end_month, placeholders_permno):
     compustat_query = compustat_query[['date','conm','gvkey','cusip','mcap_crsp_dd','bv_debt_dd','sd_12M_dd','trate_1y_dd']]
 
     return compustat_query
-
 ##############################################################################
 #Run the function and obtain the vars here
 df = distance_to_default_inputs(start_date, end_month, placeholders_permno)
-
 ##############################################################################
 #Function to estimate distance to default - returns dtd, asset value, and asset volatility 
 #Will take around 1 min to run with the 9 example companies
@@ -221,11 +216,9 @@ def dtd(df):
         #append date,gvkey,cusip,dtd,Va, and sigma_a to df to output
         df_output.loc[idx] = [df_row[0],df_row[1],df_row[2],df_row[3],dtd,Va,sigma_a]
     return df_output
-
 ##############################################################################
 #Store the DataFrame results as a variable
 df_output = dtd(df)
-
 ##############################################################################
 #Example plot of distance to default over time for American Airlines, Disney, and Procter & Gamble
 cusips1=['02376R102','254687106','742718109']
@@ -234,8 +227,6 @@ for cusip, subplot in zip(cusips1, ax.flatten()):
     data = df_output[df_output['cusip']==cusip]
     p = sns.lineplot(data=data, x='date',y='dtd',ax=subplot)
     p.set(title = data['conm'].iloc[0])
-    
-##############################################################################
-
+ 
 
 
