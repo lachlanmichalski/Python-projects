@@ -1,6 +1,5 @@
 # Distance to default - Merton (1974)
-
-'''Function to calculate Distance-to-default
+Function to calculate Distance-to-default
 
 Replication of dtd in R -> https://rdrr.io/rforge/ifrogs/src/R/dtd.R
 Extra documentation -> https://rdrr.io/rforge/ifrogs/f/inst/doc/dtd.pdf
@@ -15,4 +14,3 @@ ALL YOU NEED TO INPUT IS THE FOLLOW:
     1.  List of permno codes
     2.  Start date
     3.  End date
-'''
