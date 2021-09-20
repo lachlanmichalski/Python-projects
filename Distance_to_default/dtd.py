@@ -150,6 +150,25 @@ df = distance_to_default_inputs(start_date, end_month, placeholders_permno)
 #Function to estimate distance to default - returns dtd, asset value, and asset volatility 
 #Will take around 1 min to run with the 9 example companies
 
+#Solving reverse Black-Scholes for market value of asset and asset volatility  
+def d1(V, debt, sV, T):
+    num = (np.log(V/debt)) + ((0.5*sV**2)*T) #num = (np.log(V/debt)) + ((r_f + 0.5*sV**2)*T)
+    den = sV * np.sqrt(T)    
+    return num/den
+
+def d2(V, debt, sV, T):
+    d2 = d1(V, debt, sV, T) - sV*np.sqrt(T)
+    return d2
+
+def objective_function(unknown_vars,known_vars):
+    mcap, debt, vol, T = known_vars
+    V,sV = unknown_vars
+    rho=1
+    e1 = -mcap + V*norm.cdf(d1(V,debt*rho,sV,T)) - rho*debt*norm.cdf(d2(V,rho*debt,sV,T))
+    e2 = -vol*mcap + sV*V*norm.cdf(d1(V,debt*rho,sV,T))
+    obj_fun = (e1*e1) + (e2*e2)
+    return obj_fun
+    
 def dtd(df):
     #ASSUMPTION MADE HERE - > If firm has no debt, replace bv_debt with 0.01
     df.loc[(df.bv_debt_dd == 0),'bv_debt_dd']= 0.01
@@ -177,28 +196,9 @@ def dtd(df):
         sV = (mcap * vol) / debt #starting value of asset volatility of equity   
         debt = debt * np.exp(-r) #present value of debt
     
-        #Solving reverse Black-Scholes for market value of asset and asset volatility  
-        def d1(V, debt, sV, T):
-            num = (np.log(V/debt)) + ((0.5*sV**2)*T) #num = (np.log(V/debt)) + ((r_f + 0.5*sV**2)*T)
-            den = sV * np.sqrt(T)    
-            return num/den
-    
-        def d2(V, debt, sV, T):
-            d2 = d1(V, debt, sV, T) - sV*np.sqrt(T)
-            return d2
-    
         unknown_vars = [V,sV] #vars to find that minimize the objective function
         known_vars = [mcap,debt,vol,T] #observed vars
-    
-        def objective_function(unknown_vars,known_vars):
-            mcap, debt, vol, T = known_vars
-            V,sV = unknown_vars
-            rho=1
-            e1 = -mcap + V*norm.cdf(d1(V,debt*rho,sV,T)) - rho*debt*norm.cdf(d2(V,rho*debt,sV,T))
-            e2 = -vol*mcap + sV*V*norm.cdf(d1(V,debt*rho,sV,T))
-            obj_fun = (e1*e1) + (e2*e2)
-            return obj_fun
-    
+   
         #Solve for asset value and asset volatility - estimated from the market value 
         #and volatility of equity, and the book value of liabilities. Minimize the error term
         bnds = ((known_vars[0], np.inf), (0,np.inf)) #V (sV) lb is mcap (0), up is infinity for both 
